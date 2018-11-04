@@ -1,12 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class MyComponent extends React.Component {
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+    constructor(props) {
+        super(props);
+        this.state = {
+            counter: 0
+        };
+    }
+
+    increaseCounter = ()=>{
+        this.setState({
+            counter: this.state.counter + 1
+        });
+    }
+
+    render() {
+        return <span onClick={this.increaseCounter}>{this.props.message}{this.state.counter}</span>;
+    }
+
+}
+
+ReactDOM.render(<MyComponent message="Hallo Welt Zähler: "/>, document.getElementById('root'));
