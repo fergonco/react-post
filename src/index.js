@@ -25,9 +25,29 @@ class MyComponent extends React.Component {
 
 }
 
-ReactDOM.render((
-    <Tabs value="c1">
-        <Tab label="Counter 1" value="c1"/>
-        <Tab label="Counter 2" value="c2"/>
-    </Tabs>
-), document.getElementById('root'));
+class TabsContainer extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedTab: "c1"
+        }
+    }
+
+    changeTab = (event, value)=> {
+        this.setState({
+            selectedTab:value
+        });
+    }
+
+    render() {
+        return (
+            <Tabs value={this.state.selectedTab} onChange={this.changeTab}>
+                <Tab label="Counter 1" value="c1"/>
+                <Tab label="Counter 2" value="c2"/>
+            </Tabs>
+        );
+    }
+}
+
+ReactDOM.render(<TabsContainer/>, document.getElementById('root'));
