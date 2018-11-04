@@ -47,8 +47,12 @@ class TabsContainer extends React.Component {
                     <Tab label="Counter 1" value="c1"/>
                     <Tab label="Counter 2" value="c2"/>
                 </Tabs>
-                {this.state.selectedTab === "c1" && <MyComponent message="First counter: "/>}
-                {this.state.selectedTab === "c2" && <MyComponent message="Second counter: "/>}
+                <div className={this.state.selectedTab !== "c1"?'hidden':''}>
+                    <MyComponent message="First counter: "/>
+                </div>
+                <div className={this.state.selectedTab !== "c2"?'hidden':''}>
+                    <MyComponent message="Second counter: "/>
+                </div>
             </div>
         );
     }
