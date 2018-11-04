@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 class MyComponent extends React.Component {
 
@@ -23,4 +25,9 @@ class MyComponent extends React.Component {
 
 }
 
-ReactDOM.render(<MyComponent message="Hallo Welt Zähler: "/>, document.getElementById('root'));
+ReactDOM.render((
+    <Tabs value="c1">
+        <Tab label="Counter 1" value="c1"/>
+        <Tab label="Counter 2" value="c2"/>
+    </Tabs>
+), document.getElementById('root'));
