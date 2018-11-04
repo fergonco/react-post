@@ -42,10 +42,14 @@ class TabsContainer extends React.Component {
 
     render() {
         return (
-            <Tabs value={this.state.selectedTab} onChange={this.changeTab}>
-                <Tab label="Counter 1" value="c1"/>
-                <Tab label="Counter 2" value="c2"/>
-            </Tabs>
+            <div>
+                <Tabs value={this.state.selectedTab} onChange={this.changeTab}>
+                    <Tab label="Counter 1" value="c1"/>
+                    <Tab label="Counter 2" value="c2"/>
+                </Tabs>
+                {this.state.selectedTab === "c1" && <MyComponent message="First counter: "/>}
+                {this.state.selectedTab === "c2" && <MyComponent message="Second counter: "/>}
+            </div>
         );
     }
 }
