@@ -11,6 +11,9 @@ class MyComponent extends React.Component {
         this.state = {
             counter: 0
         };
+    }
+
+    componentDidMount() {
         this.listener = (event) => {
             this.setState({
                 counter: event.detail
@@ -18,6 +21,11 @@ class MyComponent extends React.Component {
         }
 
         document.addEventListener(this.props.eventName, this.listener);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener(this.props.eventName, this.listener);
+        this.listener = null;
     }
 
     increaseCounter = ()=>{
