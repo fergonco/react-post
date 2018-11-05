@@ -11,6 +11,13 @@ class MyComponent extends React.Component {
         this.state = {
             counter: 0
         };
+        this.listener = (event) => {
+            this.setState({
+                counter: event.detail
+            });
+        }
+
+        document.addEventListener(this.props.eventName, this.listener);
     }
 
     increaseCounter = ()=>{
@@ -48,10 +55,10 @@ class TabsContainer extends React.Component {
                     <Tab label="Counter 2" value="c2"/>
                 </Tabs>
                 <div className={this.state.selectedTab !== "c1"?'hidden':''}>
-                    <MyComponent message="First counter: "/>
+                    <MyComponent eventName="counter1-init" message="First counter: "/>
                 </div>
                 <div className={this.state.selectedTab !== "c2"?'hidden':''}>
-                    <MyComponent message="Second counter: "/>
+                    <MyComponent eventName="counter2-init" message="Second counter: "/>
                 </div>
             </div>
         );
@@ -59,3 +66,16 @@ class TabsContainer extends React.Component {
 }
 
 ReactDOM.render(<TabsContainer/>, document.getElementById('root'));
+
+setTimeout(()=>{
+    let c1 = 10;
+    let c2 = 5;
+
+    document.dispatchEvent(new CustomEvent("counter1-init", {
+        detail: c1
+    }));
+    document.dispatchEvent(new CustomEvent("counter2-init", {
+        detail: c2
+    }));
+}, 2000);
+
