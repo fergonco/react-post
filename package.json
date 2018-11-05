@@ -2,6 +2,7 @@
   "name": "react-post",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/react-post",
   "dependencies": {
     "@material-ui/core": "^3.3.2",
     "react": "^16.6.0",
